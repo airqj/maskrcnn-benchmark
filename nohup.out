@@ -1,0 +1,19 @@
+[I 15:58:11.673 NotebookApp] The port 8888 is already in use, trying another port.
+[I 15:58:11.693 NotebookApp] [jupyter_nbextensions_configurator] enabled 0.4.0
+[I 15:58:11.694 NotebookApp] Serving notebooks from local directory: /home/qinjianbo/SRC/maskrcnn-benchmark
+[I 15:58:11.694 NotebookApp] 0 active kernels
+[I 15:58:11.694 NotebookApp] The Jupyter Notebook is running at:
+[I 15:58:11.694 NotebookApp] http://localhost:8889/?token=a0ecaa8715bd30b0ba5df03a7d24fc23535f466eafc47718
+[I 15:58:11.694 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 15:58:11.695 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8889/?token=a0ecaa8715bd30b0ba5df03a7d24fc23535f466eafc47718&token=a0ecaa8715bd30b0ba5df03a7d24fc23535f466eafc47718
+[I 15:58:11.996 NotebookApp] Accepting one-time-token-authenticated connection from 127.0.0.1
+Opening in existing browser session.
+[W 15:58:16.092 NotebookApp] Notebook demo/Mask_R-CNN_demo.ipynb is not trusted
+[I 15:58:16.489 NotebookApp] Kernel started: 10d1dd4f-e44f-4e49-954f-bb3e8914e277
+[I 15:58:16.891 NotebookApp] Adapting to protocol v5.1 for kernel 10d1dd4f-e44f-4e49-954f-bb3e8914e277
+[I 16:00:16.601 NotebookApp] Saving file at /demo/Mask_R-CNN_demo.ipynb
+[W 16:00:16.601 NotebookApp] Notebook demo/Mask_R-CNN_demo.ipynb is not trusted
