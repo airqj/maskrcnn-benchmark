@@ -14,6 +14,7 @@ from maskrcnn_benchmark.utils import cv2_util
 class COCODemo(object):
     # COCO categories for pretty print
     CATEGORIES = [
+        '''
         "__background",
         "person",
         "bicycle",
@@ -95,6 +96,9 @@ class COCODemo(object):
         "teddy bear",
         "hair drier",
         "toothbrush",
+        '''
+        "__background",
+        "spec",
     ]
 
     def __init__(

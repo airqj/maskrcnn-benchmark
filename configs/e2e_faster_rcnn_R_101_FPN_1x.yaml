@@ -19,9 +19,12 @@ MODEL:
     POOLER_SAMPLING_RATIO: 2
     FEATURE_EXTRACTOR: "FPN2MLPFeatureExtractor"
     PREDICTOR: "FPNPredictor"
+    NUM_CLASSES: 2
 DATASETS:
-  TRAIN: ("coco_2014_train", "coco_2014_valminusminival")
-  TEST: ("coco_2014_minival",)
+  #TRAIN: ("coco_2014_train", "coco_2014_valminusminival")
+  #TEST: ("coco_2014_minival",)
+  TRAIN: ("coco_specs_train",)
+  TEST: ("coco_specs_val",)
 DATALOADER:
   SIZE_DIVISIBILITY: 32
 SOLVER:
