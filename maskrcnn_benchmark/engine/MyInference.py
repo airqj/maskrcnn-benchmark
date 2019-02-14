@@ -18,7 +18,7 @@ def compute_on_dataset(model, data_loader, device):
     results_dict = {}
     cpu_device = torch.device("cpu")
     for i, batch in enumerate(tqdm(data_loader)):
-        images, targets, image_ids = batch
+        images, image_ids = batch
         images = images.to(device)
         with torch.no_grad():
             output = model(images)
@@ -58,9 +58,6 @@ def inference(
         iou_types=("bbox",),
         box_only=False,
         device="cuda",
-        expected_results=(),
-        expected_results_sigma_tol=4,
-        output_folder=None,
 ):
     # convert to a torch.device for efficiency
     device = torch.device(device)
@@ -87,22 +84,3 @@ def inference(
     predictions = _accumulate_predictions_from_multiple_gpus(predictions)
 
     return predictions
-    '''
-    if not is_main_process():
-        return
-
-    if output_folder:
-        torch.save(predictions, os.path.join(output_folder, "predictions.pth"))
-
-    extra_args = dict(
-        box_only=box_only,
-        iou_types=iou_types,
-        expected_results=expected_results,
-        expected_results_sigma_tol=expected_results_sigma_tol,
-    )
-
-    return evaluate(dataset=dataset,
-                    predictions=predictions,
-                    output_folder=output_folder,
-                    **extra_args)
-    '''
