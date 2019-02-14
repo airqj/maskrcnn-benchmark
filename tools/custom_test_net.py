@@ -83,7 +83,7 @@ def main():
 
 
 def inference_server(model, cfg, dataset_name, distributed, image_path):
-    data_loaders_inference = my_make_data_loader(cfg, is_train=False, distributed=distributed, image_path=image_path)
+    data_loaders_inference = my_make_data_loader(cfg, is_distributed =distributed, image_path=image_path)
     result = inference(
         model,
         data_loaders_inference,
@@ -99,20 +99,20 @@ def inference_server(model, cfg, dataset_name, distributed, image_path):
 app = Flask(__name__)
 
 
-@app.route("/inference", method=['POST'])
+@app.route("/inference", methods=['POST'])
 def index():
     jsoned = request.json
     dataset_name = jsoned.get("dataset_name")
     image_path = jsoned.get("image_path")
-    result = inference_server(model=model, cfg=cfg, dataset_name=dataset_name, distributed=distributed,
+    result = inference_server(model=model, cfg=cfg0, dataset_name=dataset_name, distributed=distributed,
                               image_path=image_path)
     return result
 
 
 model = ''
-cfg = ''
+cfg0 = ''
 distributed = ''
 
 if __name__ == "__main__":
-    model, cfg, distributed = main()
+    model, cfg0, distributed = main()
     app.run(debug=True, host='localhost', port=8001)
