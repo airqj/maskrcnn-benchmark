@@ -23,6 +23,7 @@ class customDataSet(Dataset):
         return result
 
     def __init__(self,data_path,transfrom):
+        self.random_target = torch.randomn(3,3)
         self.transfrom = transfrom
         self.image_list = customDataSet.get_images(data_path)
 
@@ -31,7 +32,7 @@ class customDataSet(Dataset):
 
     def __getitem__(self, idx):
         image = self.image_list[idx].get("image")
-        image = self.transfrom(image)
+        image, random_target = self.transfrom(image,self.random_target)
         return image, idx
 
     def get_img_info(self, index):

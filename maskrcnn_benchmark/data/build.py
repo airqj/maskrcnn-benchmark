@@ -175,7 +175,7 @@ def make_data_loader(cfg, is_train=True, is_distributed=False, start_iter=0):
         return data_loaders[0]
     return data_loaders
 
-def my_make_data_loader(cfg, is_train=True, is_distributed=False, image_path="./",  start_iter=0):
+def my_make_data_loader(cfg, is_train=False, is_distributed=False, image_path="./",  start_iter=0):
     num_gpus = get_world_size()
     images_per_batch = cfg.TEST.IMS_PER_BATCH
     assert (
