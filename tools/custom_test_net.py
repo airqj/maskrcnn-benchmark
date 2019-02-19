@@ -106,7 +106,7 @@ def index():
     image_path = jsoned.get("image_path")
     result = inference_server(model=model, cfg=cfg0, dataset_name=dataset_name, distributed=distributed,
                               image_path=image_path)
-    return result
+    return str(result)
 
 
 model = ''
@@ -115,4 +115,4 @@ distributed = ''
 
 if __name__ == "__main__":
     model, cfg0, distributed = main()
-    app.run(debug=True, host='localhost', port=8001)
+    app.run(debug=False, host='localhost', port=8001)

@@ -13,17 +13,18 @@ class customDataSet(Dataset):
         result = []
         for file in os.listdir(path):
             image_path = path + "/" + file
-            image = cv2.imread(image_path)
+            # image = cv2.imread(image_path)
+            image = Image.open(image_path).convert("RGB")
             image_info = {"image": image,
-                          "width": image.shape[1],
-                          "height": image.shape[0],
+                          "width": image.size[0],
+                          "height": image.size[1],
                           "path": image_path
                           }
             result.append(image_info)
         return result
 
     def __init__(self,data_path,transfrom):
-        self.random_target = torch.randomn(3,3)
+        self.random_target = torch.randn(3,3)
         self.transfrom = transfrom
         self.image_list = customDataSet.get_images(data_path)
 
@@ -32,7 +33,8 @@ class customDataSet(Dataset):
 
     def __getitem__(self, idx):
         image = self.image_list[idx].get("image")
-        image, random_target = self.transfrom(image,self.random_target)
+        # image, random_target = self.transfrom(image,self.random_target)
+        image = self.transfrom(image)
         return image, idx
 
     def get_img_info(self, index):
