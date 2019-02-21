@@ -93,7 +93,17 @@ def inference_server(model, cfg, dataset_name, distributed, image_path):
     )
     synchronize()
 
-    return result
+    final_result = {}
+    dataset = data_loaders_inference.dataset
+    for id, prediction in enumerate(result):
+        path = dataset.image_list[id]["path"]
+        width = dataset.image_list[id]["width"]
+        height = dataset.image_list[id]["height"]
+        prediction = prediction.resize((width, height))
+        prediction = prediction.convert("xywh")
+        final_result[path] = prediction.bbox.tolist()
+
+    return final_result
 
 
 app = Flask(__name__)
@@ -106,7 +116,8 @@ def index():
     image_path = jsoned.get("image_path")
     result = inference_server(model=model, cfg=cfg0, dataset_name=dataset_name, distributed=distributed,
                               image_path=image_path)
-    return str(result)
+
+    return json.dumps(result)
 
 
 model = ''

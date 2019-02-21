@@ -11,11 +11,12 @@ class customDataSet(Dataset):
     @staticmethod
     def get_images(path):
         result = []
-        for file in os.listdir(path):
+        for id, file in enumerate(os.listdir(path)):
             image_path = path + "/" + file
             # image = cv2.imread(image_path)
             image = Image.open(image_path).convert("RGB")
-            image_info = {"image": image,
+            image_info = {"id":id,
+                          "image": image,
                           "width": image.size[0],
                           "height": image.size[1],
                           "path": image_path

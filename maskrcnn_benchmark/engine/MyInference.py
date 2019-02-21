@@ -82,5 +82,4 @@ def inference(
     )
 
     predictions = _accumulate_predictions_from_multiple_gpus(predictions)
-
     return predictions
